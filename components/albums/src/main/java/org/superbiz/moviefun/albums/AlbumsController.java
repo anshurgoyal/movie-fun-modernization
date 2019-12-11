@@ -71,7 +71,7 @@ public class AlbumsController {
         byte[] imageBytes = IOUtils.toByteArray(coverBlob.inputStream);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.parseMediaType(coverBlob.contentType));
+        //headers.setContentType(MediaType.parseMediaType(coverBlob.contentType));
         headers.setContentLength(imageBytes.length);
 
         return new HttpEntity<>(imageBytes, headers);
@@ -92,7 +92,7 @@ public class AlbumsController {
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream input = classLoader.getResourceAsStream("default-cover.jpg");
 
-        return new Blob("default-cover", input, IMAGE_JPEG_VALUE);
+        return new Blob("default-cover", input, MediaType.IMAGE_JPEG_VALUE);
     }
 
     private String getCoverBlobName(@PathVariable long albumId) {
