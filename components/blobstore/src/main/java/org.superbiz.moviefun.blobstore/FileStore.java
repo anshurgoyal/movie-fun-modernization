@@ -37,10 +37,11 @@ public class FileStore implements BlobStore {
             return Optional.empty();
         }
 
-        return Optional.of(new Blob(
+        return Optional.of(new org.superbiz.moviefun.blobstore.Blob(
             name,
             new FileInputStream(file),
             tika.detect(file)
         ));
+
     }
 }
